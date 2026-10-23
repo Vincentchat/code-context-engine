@@ -36,8 +36,8 @@ class Compressor:
     ) -> None:
         """`cache` is any object exposing get_cached_compression(chunk_id, level)
         and put_cached_compression(chunk_id, level, text). LocalBackend satisfies
-        this; RemoteBackend currently doesn't, so we duck-type check and disable
-        caching gracefully if either method is missing."""
+        this; we duck-type check and disable caching gracefully if either method
+        is missing."""
         self._client = OllamaClient(base_url=ollama_url, model=model)
         self._quality = QualityChecker()
         if cache is not None and hasattr(cache, "get_cached_compression") and hasattr(cache, "put_cached_compression"):

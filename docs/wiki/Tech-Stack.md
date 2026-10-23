@@ -322,14 +322,6 @@ import httpx
 
 Used by `cce services` to check whether Ollama is actually responding on port 11434. A process being alive is not enough — the API might still be starting up.
 
-**3. Remote backend** — `src/context_engine/storage/remote_backend.py`
-
-```python
-import httpx
-```
-
-Powers the experimental remote mode where the CCE storage layer is a separate HTTP server rather than local files. Not used in the default local setup.
-
 **Why httpx over requests:** httpx supports both sync and async APIs. The Ollama client needs async to avoid blocking the MCP server event loop while waiting for LLM responses. `requests` is sync-only.
 
 ---
